@@ -1,7 +1,6 @@
 import axios from "axios";
 import MaterialTable from "material-table";
 import React, { useEffect, useState } from "react";
-import logo from "../image/logo.png";
 const Product = () => {
   const columns = [
     { title: "Title", field: "title", validate: (rowData) => Boolean(rowData.title) },
@@ -29,7 +28,11 @@ const Product = () => {
       ),
     },
     { title: "Created By", field: "created_by", render: (rowData) => rowData.created_by.name },
-    { title: "Status", field: "status" },
+    {
+      title: "Status",
+      field: "status",
+      render: (rowData) => <div>{rowData.status ? "active" : "deactive"}</div>,
+    },
     { title: "Created At", field: "created_at" },
   ];
 
@@ -43,7 +46,7 @@ const Product = () => {
       setData(res.data.data);
     });
   };
-  // console.log(data);
+  console.log(data);
 
   return (
     <div style={{ width: "70%" }}>
