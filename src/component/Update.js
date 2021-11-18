@@ -15,8 +15,8 @@ function Update() {
 
   return (
     <div>
-      <Container style={{ margin: 20 }}>
-        <Card style={{ height: 120, padding: 30 }}>
+      <Container style={{ margin: 10 }}>
+        <Card style={{ height: 120 }}>
           <form onSubmit={handleSubmit}>
             <label>
               Title:
@@ -32,7 +32,7 @@ function Update() {
             </label>
             <label>
               Photo:
-              <input type="text" value={data} onChange={handleChange} />
+              <input type="file" value={data} onChange={handleChange} />
             </label>
             <button type="submit">Submit</button>
           </form>
