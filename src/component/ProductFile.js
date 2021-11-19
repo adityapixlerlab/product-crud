@@ -7,9 +7,11 @@ import "./File.css";
 import { Link } from "@material-ui/core";
 function ProductFile() {
   const [data, setData] = useState([]);
+  const [toggleData, setToggleData] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [addData, setAddData] = useState({ photo: [] });
-  const [createdData, setCreatedData] = useState("");
+  const [rowData, setRowData] = useState([]);
+  const [newData, setNewData] = useState([]);
   const handleChangeData = (e) => {
     e.preventDefault();
 
@@ -29,6 +31,12 @@ function ProductFile() {
     deleteData.splice(e, 1);
     setData(deleteData);
   };
+
+  const handleEditData = (e) => {
+    e.preventDefault();
+    // setData(data.map((row)=>{if(row._id)}))
+  };
+
   console.log(addData);
   useEffect(() => {
     getData();
@@ -42,7 +50,7 @@ function ProductFile() {
       });
     });
   };
-
+  // console.log(rowData);
   return (
     <div>
       <table>
@@ -75,7 +83,12 @@ function ProductFile() {
             <td>{item.status}</td>
             <td>{item.created_at}</td>
             <td>
-              <Link>
+              <Link
+                onClick={() => {
+                  setToggleData(!toggleData);
+                  setRowData(item);
+                }}
+              >
                 <EditIcon />
               </Link>
               <Link onClick={() => handleDeleteData(i)}>
@@ -87,6 +100,7 @@ function ProductFile() {
       </table>
       <br />
       <br />
+      {toggleData && <Update val={() => handleEditData()} rowData={rowData} />}
       {toggle && (
         <div className="container">
           <h1>Add Data</h1>
