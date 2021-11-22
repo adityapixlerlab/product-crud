@@ -11,7 +11,6 @@ function ProductFile() {
   const [toggle, setToggle] = useState(false);
   const [addData, setAddData] = useState({ photo: [] });
   const [rowData, setRowData] = useState([]);
-  const [newData, setNewData] = useState([]);
   const handleChangeData = (e) => {
     e.preventDefault();
 
@@ -32,10 +31,10 @@ function ProductFile() {
     setData(deleteData);
   };
 
-  const handleEditData = (e) => {
-    e.preventDefault();
-    // setData(data.map((row)=>{if(row._id)}))
-  };
+  // const handleEditData = (e) => {
+  //   e.preventDefault();
+  //   // setData(data.map((row)=>{if(row._id === )}))
+  // };
 
   console.log(addData);
   useEffect(() => {
@@ -91,7 +90,7 @@ function ProductFile() {
               >
                 <EditIcon />
               </Link>
-              <Link onClick={() => handleDeleteData(i)}>
+              <Link onClick={() => handleDeleteData(i)} style={{ marginLeft: 12 }}>
                 <DeleteIcon />
               </Link>
             </td>
@@ -100,7 +99,7 @@ function ProductFile() {
       </table>
       <br />
       <br />
-      {toggleData && <Update val={() => handleEditData()} rowData={rowData} />}
+      {toggleData && <Update rowData={rowData} />}
       {toggle && (
         <div className="container">
           <h1>Add Data</h1>

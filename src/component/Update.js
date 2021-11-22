@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 
-function Update({ val, rowData }) {
+function Update({ rowData }) {
   const [data, setData] = useState([]);
+  const [newData, setNewData] = useState([]);
   const handleChange = (e) => {
     e.preventDefault();
     setData({ ...data, [e.target.name]: e.target.value });
   };
+
+  const handleEdit = (e) => {};
   console.log(rowData, "====");
   return (
     <div className="container">
       <h1>Update Data</h1>
-      <form onSubmit={val}>
+      <form onSubmit={handleEdit(rowData._id)}>
         <label>
           Title:
           <input
